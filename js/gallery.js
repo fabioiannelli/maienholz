@@ -1,52 +1,65 @@
-// Lightbox gallery
+// Slideshow gallery
 (function () {
-  const lightbox = document.getElementById('lightbox');
-  if (!lightbox) return;
+  const slideshow = document.querySelector('.slideshow');
+  if (!slideshow) return;
 
-  const img = lightbox.querySelector('.lightbox__img');
-  const caption = lightbox.querySelector('.lightbox__caption');
-  const items = document.querySelectorAll('.gallery__item');
+  const slides = Array.from(slideshow.querySelectorAll('.slideshow__slide'));
+  const prevBtn = slideshow.querySelector('.slideshow__nav--prev');
+  const nextBtn = slideshow.querySelector('.slideshow__nav--next');
+  const dotsContainer = slideshow.querySelector('.slideshow__dots');
+  const caption = slideshow.querySelector('.slideshow__caption');
+  const counterCurrent = slideshow.querySelector('.slideshow__counter-current');
+  const counterTotal = slideshow.querySelector('.slideshow__counter-total');
+
   let current = 0;
+  const total = slides.length;
 
-  const images = Array.from(items).map((item) => ({
-    src: item.querySelector('img').src,
-    alt: item.querySelector('img').alt,
-  }));
+  if (counterTotal) counterTotal.textContent = total;
+
+  const dots = slides.map((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slideshow__dot';
+    dot.type = 'button';
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Bild ${i + 1} von ${total}`);
+    dot.addEventListener('click', () => show(i));
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
 
   function show(index) {
-    current = (index + images.length) % images.length;
-    img.src = images[current].src;
-    img.alt = images[current].alt;
-    if (caption) caption.textContent = images[current].alt;
+    current = (index + total) % total;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === current));
+    const img = slides[current].querySelector('img');
+    if (caption && img) caption.textContent = img.alt;
+    if (counterCurrent) counterCurrent.textContent = current + 1;
   }
 
-  function open(index) {
-    show(index);
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function close() {
-    lightbox.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  items.forEach((item, i) => {
-    item.addEventListener('click', () => open(i));
-  });
-
-  lightbox.querySelector('.lightbox__close').addEventListener('click', close);
-  lightbox.querySelector('.lightbox__nav--prev').addEventListener('click', () => show(current - 1));
-  lightbox.querySelector('.lightbox__nav--next').addEventListener('click', () => show(current + 1));
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) close();
-  });
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
 
   document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('is-open')) return;
-    if (e.key === 'Escape') close();
+    const rect = slideshow.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!inView) return;
     if (e.key === 'ArrowLeft') show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
   });
+
+  // Touch swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const track = slideshow.querySelector('.slideshow__track');
+  track.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) show(current + 1);
+      else show(current - 1);
+    }
+  }, { passive: true });
+
+  show(0);
 })();

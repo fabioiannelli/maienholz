@@ -143,30 +143,47 @@
     <section class="section">
       <div class="container">
         <h2 class="section__title" data-animate>Galerie</h2>
-        <div class="gallery" data-animate>
-          <div class="gallery__item">
-            <img src="images/drohne.jpg" alt="Drohnenansicht der Überbauung Maienholz">
+        <div class="slideshow" data-animate>
+          <div class="slideshow__stage">
+            <button class="slideshow__nav slideshow__nav--prev" aria-label="Vorheriges Bild">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="slideshow__track">
+              <div class="slideshow__slide is-active">
+                <img src="images/drohne.jpg" alt="Drohnenansicht der Überbauung Maienholz">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/hof.jpg" alt="Innenhof mit Begegnungszone und Spielplatz">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/attika.jpg" alt="Attikawohnung — Wohn- und Essbereich">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/innen-a.jpg" alt="Innenansicht Wohnung — offene Wohnküche">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/innen-c.jpg" alt="Innenansicht Reihenhaus — Wohnbereich mit Treppe">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/reihenhaus.jpg" alt="Reiheneinfamilienhäuser — Aussenansicht mit Garten">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/attika-nordsicht.jpg" alt="Attika-Terrasse mit Blick auf Weinberg und Heckenlandschaft">
+              </div>
+              <div class="slideshow__slide">
+                <img src="images/attika-c2.jpg" alt="Attika-Dachterrasse mit Weitblick über Hügellandschaft">
+              </div>
+            </div>
+            <button class="slideshow__nav slideshow__nav--next" aria-label="Nächstes Bild">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
           </div>
-          <div class="gallery__item">
-            <img src="images/hof.jpg" alt="Innenhof mit Begegnungszone und Spielplatz">
-          </div>
-          <div class="gallery__item">
-            <img src="images/attika.jpg" alt="Attikawohnung — Wohn- und Essbereich">
-          </div>
-          <div class="gallery__item">
-            <img src="images/innen-a.jpg" alt="Innenansicht Wohnung — offene Wohnküche">
-          </div>
-          <div class="gallery__item">
-            <img src="images/innen-c.jpg" alt="Innenansicht Reihenhaus — Wohnbereich mit Treppe">
-          </div>
-          <div class="gallery__item">
-            <img src="images/reihenhaus.jpg" alt="Reiheneinfamilienhäuser — Aussenansicht mit Garten">
-          </div>
-          <div class="gallery__item">
-            <img src="images/attika-nordsicht.jpg" alt="Attika-Terrasse mit Blick auf Weinberg und Heckenlandschaft">
-          </div>
-          <div class="gallery__item">
-            <img src="images/attika-c2.jpg" alt="Attika-Dachterrasse mit Weitblick über Hügellandschaft">
+          <div class="slideshow__footer">
+            <p class="slideshow__caption">Drohnenansicht der Überbauung Maienholz</p>
+            <div class="slideshow__meta">
+              <div class="slideshow__dots" role="tablist" aria-label="Bildauswahl"></div>
+              <span class="slideshow__counter"><span class="slideshow__counter-current">1</span> / <span class="slideshow__counter-total">8</span></span>
+            </div>
           </div>
         </div>
       </div>
@@ -217,15 +234,6 @@
       </div>
     </section>
   </main>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox__close" aria-label="Schliessen">&times;</button>
-    <button class="lightbox__nav lightbox__nav--prev" aria-label="Vorheriges Bild">&#8249;</button>
-    <button class="lightbox__nav lightbox__nav--next" aria-label="Nächstes Bild">&#8250;</button>
-    <img class="lightbox__img" src="" alt="">
-    <div class="lightbox__caption"></div>
-  </div>
 
   <!-- Footer -->
   <footer class="footer">
