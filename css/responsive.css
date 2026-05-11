@@ -5,7 +5,16 @@
   }
 
   .header__inner {
+    grid-template-columns: 1fr auto;
     padding: 0.6rem 1rem;
+  }
+
+  .header__inner > .header__cta {
+    display: none;
+  }
+
+  .header__inner > nav {
+    justify-self: end;
   }
 
   .nav__toggle {
