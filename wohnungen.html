@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mietwohnungen & Reihenhäuser — Überbauung Maienholz</title>
+  <meta name="description" content="8 Mietwohnungen und 7 Reiheneinfamilienhäuser zur Miete in der Überbauung Maienholz Erlinsbach. Grundrisse, Flächen und Mietzinse im Überblick.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><path fill-rule='evenodd' d='M22 3C30 2 37.5 9.5 37 19C36.5 28.5 29 36 19.5 36.5C10 37 3 29.5 3.5 20C4 10.5 14 4 22 3ZM21 13.5C17.5 14 14.5 17 15 21C15.5 25 18.5 27.5 22 27C25.5 26.5 28 23.5 27.5 20C27 16.5 24 13 21 13.5Z' fill='%234A5E3A'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/wohnungen.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="Maienholz — Home"><svg class="header__logo-icon" viewBox="0 0 40 40" fill="currentColor"><path fill-rule="evenodd" d="M22 3C30 2 37.5 9.5 37 19C36.5 28.5 29 36 19.5 36.5C10 37 3 29.5 3.5 20C4 10.5 14 4 22 3ZM21 13.5C17.5 14 14.5 17 15 21C15.5 25 18.5 27.5 22 27C25.5 26.5 28 23.5 27.5 20C27 16.5 24 13 21 13.5Z"/></svg></a>
+      <nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav__overlay" id="navOverlay">
+          <ul class="nav__list">
+            <li><a href="index.html" class="nav__link">Home</a></li>
+            <li><a href="projekt.html" class="nav__link">Projekt</a></li>
+            <li><a href="wohnungen.html" class="nav__link">Mietobjekte</a></li>
+            <li><a href="lage.html" class="nav__link">Lage</a></li>
+            <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+            <li class="nav__cta-wrap"><a href="kontakt.html" class="nav__cta">Besichtigung vereinbaren</a></li>
+          </ul>
+        </div>
+        <ul class="nav__list" id="navDesktop">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="projekt.html" class="nav__link">Projekt</a></li>
+          <li><a href="wohnungen.html" class="nav__link">Mietobjekte</a></li>
+          <li><a href="lage.html" class="nav__link">Lage</a></li>
+          <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+            <li class="nav__cta-wrap"><a href="kontakt.html" class="nav__cta">Besichtigung vereinbaren</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero--half">
+      <div class="hero__bg">
+        <img src="images/innen-c.jpg" alt="Innenansicht einer Wohnung in der Überbauung Maienholz">
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title">Mietobjekte</h1>
+        <p class="hero__subtitle">Mietwohnungen & Reiheneinfamilienhäuser</p>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container container--narrow text-center" data-animate>
+        <h2>Das Angebot im Überblick</h2>
+        <p style="margin-top: var(--space-md); color: var(--color-text-light); font-size: 1.05rem;">
+          Die Überbauung Maienholz umfasst <strong>8 Mietwohnungen</strong> in zwei Mehrfamilienhäusern
+          sowie <strong>7 Reiheneinfamilienhäuser</strong> zur Miete. Alle Einheiten verfügen über grosszügige Grundrisse
+          mit 4.5 bis 5.5 Zimmern, zwei Nasszellen und mindestens zwei Aussenbereiche.
+        </p>
+      </div>
+    </section>
+
+    <!-- Axo + Wohnungen: sticky layout wrapper -->
+    <div class="axo-layout" id="axoLayout">
+
+      <!-- Sticky axonometry -->
+      <div class="axo-sticky">
+        <div class="axo-sticky__inner">
+          <div class="axo" id="axoContainer">
+            <div class="axo__stack">
+              <img class="axo__img axo__img--base" src="images/axo-base.png" alt="Axonometrie Überbauung Maienholz">
+              <img class="axo__img axo__img--overlay" data-unit-id="A1"     src="images/axo-A1.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="A2"     src="images/axo-A2.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="A3"     src="images/axo-A3.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="A4"     src="images/axo-A4.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="A5"     src="images/axo-A5.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="B1"     src="images/axo-B1.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="B2"     src="images/axo-B2.png"     alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C1.1"   src="images/axo-C1.1.png"   alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C1.101" src="images/axo-C1.101.png" alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C1.102" src="images/axo-C1.102.png" alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C1.201" src="images/axo-C1.201.png" alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C2.1"   src="images/axo-C2.1.png"   alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C2.101" src="images/axo-C2.101.png" alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C2.102" src="images/axo-C2.102.png" alt="">
+              <img class="axo__img axo__img--overlay" data-unit-id="C2.201" src="images/axo-C2.201.png" alt="">
+            </div>
+          </div>
+          <p class="axo-sticky__hint">Objekt in der Liste unten hovern, um es hier hervorzuheben</p>
+        </div>
+      </div>
+
+      <!-- Scrollable unit listing -->
+      <div class="axo-content">
+        <h2 class="section__title" data-animate>Wohnungen — Mehrfamilienhäuser</h2>
+
+        <div class="unit-grid" data-animate>
+          <!-- C1.1 -->
+          <div class="ucard" data-unit="C1" data-unit-id="C1.1">
+            <div class="ucard__badge">EG</div>
+            <h3 class="ucard__name">Wohnung C1.1</h3>
+            <div class="ucard__rooms">5.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">151.1 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">47.4 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">70.3 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'100.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_C1.1.pdf" target="_blank" class="ucard__link">Grundriss EG</a>
+              <a href="plans/UG_C1.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C1.1.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C1.101 -->
+          <div class="ucard" data-unit="C1" data-unit-id="C1.101">
+            <div class="ucard__badge">OG</div>
+            <h3 class="ucard__name">Wohnung C1.101</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">115.9 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">44.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">12.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 2'300.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/OG_C1.101___C1.102.pdf" target="_blank" class="ucard__link">Grundriss OG</a>
+              <a href="plans/UG_C1.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C1.101.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C1.102 -->
+          <div class="ucard" data-unit="C1" data-unit-id="C1.102">
+            <div class="ucard__badge">OG</div>
+            <h3 class="ucard__name">Wohnung C1.102</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">116.5 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">56.9 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">17.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 2'350.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/OG_C1.101___C1.102.pdf" target="_blank" class="ucard__link">Grundriss OG</a>
+              <a href="plans/UG_C1.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C1.102.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C1.201 -->
+          <div class="ucard" data-unit="C1" data-unit-id="C1.201">
+            <div class="ucard__badge ucard__badge--attika">Attika</div>
+            <h3 class="ucard__name">Wohnung C1.201</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">126.7 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">195.6 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">—</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 4'200.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/ATT_C1.201.pdf" target="_blank" class="ucard__link">Grundriss Attika</a>
+              <a href="plans/UG_C1.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C1.201.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C2.1 -->
+          <div class="ucard" data-unit="C2" data-unit-id="C2.1">
+            <div class="ucard__badge">EG</div>
+            <h3 class="ucard__name">Wohnung C2.1</h3>
+            <div class="ucard__rooms">5.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">151.1 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">47.4 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">125.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'100.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_C2.1.pdf" target="_blank" class="ucard__link">Grundriss EG</a>
+              <a href="plans/UG_C2.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C2.1.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C2.101 -->
+          <div class="ucard" data-unit="C2" data-unit-id="C2.101">
+            <div class="ucard__badge">OG</div>
+            <h3 class="ucard__name">Wohnung C2.101</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">115.9 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">43.9 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">16.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 2'500.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/OG_C2.101___2.102.pdf" target="_blank" class="ucard__link">Grundriss OG</a>
+              <a href="plans/UG_C2.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C2.101.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C2.102 -->
+          <div class="ucard" data-unit="C2" data-unit-id="C2.102">
+            <div class="ucard__badge">OG</div>
+            <h3 class="ucard__name">Wohnung C2.102</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">116.5 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">56.9 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">22.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 2'550.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/OG_C2.101___2.102.pdf" target="_blank" class="ucard__link">Grundriss OG</a>
+              <a href="plans/UG_C2.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C2.102.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- C2.201 -->
+          <div class="ucard" data-unit="C2" data-unit-id="C2.201">
+            <div class="ucard__badge ucard__badge--attika">Attika</div>
+            <h3 class="ucard__name">Wohnung C2.201</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">126.7 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">195.6 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">—</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 4'200.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/OG_C2.201.pdf" target="_blank" class="ucard__link">Grundriss OG</a>
+              <a href="plans/UG_C2.pdf" target="_blank" class="ucard__link">Keller</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-C2.201.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Reihenhäuser -->
+        <h2 class="section__title" style="margin-top: var(--space-xl);" data-animate>Reiheneinfamilienhäuser</h2>
+
+        <div class="unit-grid" data-animate>
+          <!-- A1 -->
+          <div class="ucard" data-unit="A1" data-unit-id="A1">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus A1</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">120.5 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">37.3 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">100.7 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'000.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_A1.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_A1.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/UG_A1.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-A1.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- A2 -->
+          <div class="ucard" data-unit="A2" data-unit-id="A2">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus A2</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">122.1 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">25.4 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">17.2 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 2'850.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_A2_A3.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_A2_A3.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/ATT_A2_A3.pdf" target="_blank" class="ucard__link">Attika</a>
+              <a href="plans/UG_A2_A3.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-A2.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- A3 -->
+          <div class="ucard" data-unit="A3" data-unit-id="A3">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus A3</h3>
+            <div class="ucard__rooms">5.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">151.5 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">136.8 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">14.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'750.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_A2_A3.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_A2_A3.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/ATT_A2_A3.pdf" target="_blank" class="ucard__link">Attika</a>
+              <a href="plans/UG_A2_A3.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-A3.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- A4 -->
+          <div class="ucard" data-unit="A4" data-unit-id="A4">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus A4</h3>
+            <div class="ucard__rooms">5.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">151.5 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">59.2 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">18.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'300.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_A5_A4.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_A5_A4.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/ATT_A5_A4.pdf" target="_blank" class="ucard__link">Attika</a>
+              <a href="plans/UG_A5_A4.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-A4.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- A5 -->
+          <div class="ucard" data-unit="A5" data-unit-id="A5">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus A5</h3>
+            <div class="ucard__rooms">5.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">152.1 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">60.2 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">25.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'400.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_A5_A4.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_A5_A4.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/ATT_A5_A4.pdf" target="_blank" class="ucard__link">Attika</a>
+              <a href="plans/UG_A5_A4.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-A5.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- B1 -->
+          <div class="ucard" data-unit="B1" data-unit-id="B1">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus B1</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">122.8 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">30.5 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">20.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 2'900.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_B1_B2.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_B1_B2.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/UG_B1_B2.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-B1.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+
+          <!-- B2 -->
+          <div class="ucard" data-unit="B2" data-unit-id="B2">
+            <div class="ucard__badge">REFH</div>
+            <h3 class="ucard__name">Reihenhaus B2</h3>
+            <div class="ucard__rooms">4.5 Zimmer</div>
+            <div class="ucard__details">
+              <div class="ucard__detail">
+                <span class="ucard__label">Wohnfläche</span>
+                <span class="ucard__value">122.7 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Aussenfläche</span>
+                <span class="ucard__value">33.1 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Grünfläche</span>
+                <span class="ucard__value">125.0 m²</span>
+              </div>
+              <div class="ucard__detail">
+                <span class="ucard__label">Mietzins</span>
+                <span class="ucard__value ucard__value--price">CHF 3'000.00</span>
+              </div>
+            </div>
+            <div class="ucard__actions">
+              <a href="plans/EG_B1_B2.pdf" target="_blank" class="ucard__link">EG</a>
+              <a href="plans/OG_B1_B2.pdf" target="_blank" class="ucard__link">OG</a>
+              <a href="plans/UG_B1_B2.pdf" target="_blank" class="ucard__link">UG</a>
+            </div>
+            <a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank" class="ucard__axo-tile" aria-label="Position in der Überbauung anzeigen">
+              <span class="ucard__axo-tile__stack">
+                <img src="images/axo-base.png" alt="" loading="lazy">
+                <img src="images/axo-B2.png" alt="" loading="lazy">
+              </span>
+              <span class="ucard__axo-tile__label">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Position in der Überbauung
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Parking -->
+        <div class="parking-info" data-animate>
+          <div class="parking-info__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10H6l-2.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2M6 17a3 3 0 1 0 6 0M12 17a3 3 0 1 0 6 0"/></svg>
+          </div>
+          <div>
+            <strong>32 Einstellplätze</strong> in gemeinsamer Einstellhalle, davon 3 rollstuhlgängig.
+            <span class="parking-info__price">CHF 130.00 / Monat</span>
+          </div>
+        </div>
+
+      </div><!-- /.axo-content -->
+    </div><!-- /.axo-layout -->
+
+    <!-- Interior images -->
+    <section class="section section--grey">
+      <div class="container" data-animate>
+        <h2 class="section__title">Innenraumimpressionen</h2>
+        <div class="image-pair">
+          <img src="images/attika.jpg" alt="Attikawohnung — heller Wohn-Essbereich mit Eichenparkett">
+          <img src="images/innen-a.jpg" alt="Wohnung — moderne offene Küche mit Essbereich">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__title">Navigation</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projekt.html">Projekt</a></li>
+            <li><a href="wohnungen.html">Mietobjekte</a></li>
+            <li><a href="lage.html">Lage</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Informationen</p>
+          <ul class="footer__links">
+            <li><a href="plans/GESAMT_SITUATION.pdf" target="_blank">Situationsplan</a></li>
+            <li><a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank">Axonometrie</a></li>
+            <li><a href="plans/130.500.1_FARB-_und_MATERIALKONZEPT.pdf" target="_blank">Farb- &amp; Materialkonzept</a></li>
+            <li><a href="plans/Anmeldeformular.pdf" target="_blank">Anmeldeformular</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Socials</p>
+          <ul class="footer__links footer__social">
+            <li><a href="https://instagram.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Instagram</a></li>
+            <li><a href="https://facebook.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>YouTube</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Kontakt</p>
+          <ul class="footer__links">
+            <li>Hamero Immobilien AG</li>
+            <li><a href="mailto:info@hamero.ch">info@hamero.ch</a></li>
+            <li><a href="tel:+41628382020">062 838 20 20</a></li>
+            <li>Fabio Iannelli</li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Ressourcen</p>
+          <ul class="footer__links">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>Hamero Immobilien AG, Aarau</span>
+        <span>&copy; 2026 Hamero Immobilien AG. Alle Rechte vorbehalten.</span>
+      </div>
+    </div>
+    <div class="footer__brand-xl" aria-hidden="true">Maienholz</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/wohnungen.js"></script>
+</body>
+</html>

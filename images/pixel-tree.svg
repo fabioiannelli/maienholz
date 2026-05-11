@@ -1,0 +1,79 @@
+<svg viewBox="0 0 236 332" xmlns="http://www.w3.org/2000/svg">
+  <!-- Canopy - main green -->
+  <g fill="#4A5E3A">
+    <rect x="72" y="24" width="20" height="20" rx="3"/>
+    <rect x="96" y="24" width="20" height="20" rx="3"/>
+    <rect x="72" y="48" width="20" height="20" rx="3"/>
+    <rect x="96" y="48" width="20" height="20" rx="3"/>
+    <rect x="144" y="48" width="20" height="20" rx="3"/>
+    <rect x="48" y="72" width="20" height="20" rx="3"/>
+    <rect x="72" y="72" width="20" height="20" rx="3"/>
+    <rect x="120" y="72" width="20" height="20" rx="3"/>
+    <rect x="144" y="72" width="20" height="20" rx="3"/>
+    <rect x="24" y="96" width="20" height="20" rx="3"/>
+    <rect x="48" y="96" width="20" height="20" rx="3"/>
+    <rect x="96" y="96" width="20" height="20" rx="3"/>
+    <rect x="120" y="96" width="20" height="20" rx="3"/>
+    <rect x="168" y="96" width="20" height="20" rx="3"/>
+    <rect x="24" y="120" width="20" height="20" rx="3"/>
+    <rect x="48" y="120" width="20" height="20" rx="3"/>
+    <rect x="72" y="120" width="20" height="20" rx="3"/>
+    <rect x="120" y="120" width="20" height="20" rx="3"/>
+    <rect x="144" y="120" width="20" height="20" rx="3"/>
+    <rect x="168" y="120" width="20" height="20" rx="3"/>
+    <rect x="0" y="144" width="20" height="20" rx="3"/>
+    <rect x="24" y="144" width="20" height="20" rx="3"/>
+    <rect x="72" y="144" width="20" height="20" rx="3"/>
+    <rect x="96" y="144" width="20" height="20" rx="3"/>
+    <rect x="144" y="144" width="20" height="20" rx="3"/>
+    <rect x="168" y="144" width="20" height="20" rx="3"/>
+    <rect x="192" y="144" width="20" height="20" rx="3"/>
+    <rect x="24" y="168" width="20" height="20" rx="3"/>
+    <rect x="72" y="168" width="20" height="20" rx="3"/>
+    <rect x="96" y="168" width="20" height="20" rx="3"/>
+    <rect x="120" y="168" width="20" height="20" rx="3"/>
+    <rect x="168" y="168" width="20" height="20" rx="3"/>
+    <rect x="192" y="168" width="20" height="20" rx="3"/>
+    <rect x="48" y="192" width="20" height="20" rx="3"/>
+    <rect x="96" y="192" width="20" height="20" rx="3"/>
+    <rect x="120" y="192" width="20" height="20" rx="3"/>
+    <rect x="144" y="192" width="20" height="20" rx="3"/>
+    <rect x="72" y="216" width="20" height="20" rx="3"/>
+    <rect x="120" y="216" width="20" height="20" rx="3"/>
+    <rect x="144" y="216" width="20" height="20" rx="3"/>
+    <rect x="96" y="240" width="20" height="20" rx="3"/>
+  </g>
+  <!-- Canopy - light green -->
+  <g fill="#5E7A48">
+    <rect x="96" y="0" width="20" height="20" rx="3"/>
+    <rect x="120" y="24" width="20" height="20" rx="3"/>
+    <rect x="48" y="48" width="20" height="20" rx="3"/>
+    <rect x="120" y="48" width="20" height="20" rx="3"/>
+    <rect x="24" y="72" width="20" height="20" rx="3"/>
+    <rect x="96" y="72" width="20" height="20" rx="3"/>
+    <rect x="168" y="72" width="20" height="20" rx="3"/>
+    <rect x="72" y="96" width="20" height="20" rx="3"/>
+    <rect x="144" y="96" width="20" height="20" rx="3"/>
+    <rect x="0" y="120" width="20" height="20" rx="3"/>
+    <rect x="96" y="120" width="20" height="20" rx="3"/>
+    <rect x="192" y="120" width="20" height="20" rx="3"/>
+    <rect x="48" y="144" width="20" height="20" rx="3"/>
+    <rect x="120" y="144" width="20" height="20" rx="3"/>
+    <rect x="216" y="144" width="20" height="20" rx="3"/>
+    <rect x="48" y="168" width="20" height="20" rx="3"/>
+    <rect x="144" y="168" width="20" height="20" rx="3"/>
+    <rect x="72" y="192" width="20" height="20" rx="3"/>
+    <rect x="168" y="192" width="20" height="20" rx="3"/>
+    <rect x="96" y="216" width="20" height="20" rx="3"/>
+    <rect x="120" y="240" width="20" height="20" rx="3"/>
+  </g>
+  <!-- Trunk -->
+  <g fill="#6B5D4F">
+    <rect x="96" y="264" width="20" height="20" rx="3"/>
+    <rect x="120" y="264" width="20" height="20" rx="3"/>
+    <rect x="96" y="288" width="20" height="20" rx="3"/>
+    <rect x="120" y="288" width="20" height="20" rx="3"/>
+    <rect x="96" y="312" width="20" height="20" rx="3"/>
+    <rect x="120" y="312" width="20" height="20" rx="3"/>
+  </g>
+</svg>
