@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"H:\\\\260402_agr_erlinsbach_Attika_Nordsicht.jpg\" \"images/attika-nordsicht.jpg\")",
+      "Bash(cp \"H:\\\\260402_agr_erlinsbach_Attika_C2.jpg\" \"images/attika-c2.jpg\")"
+    ]
+  }
+}
