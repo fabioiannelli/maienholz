@@ -463,10 +463,9 @@
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%);
 }
 
-/* Hero → white fade transition (replaces the old stripe band) */
+/* Hero → white fade transition: now handled inside .hero__overlay; this strip kept seamless */
 .hero-fade {
-  height: 20px;
-  background: linear-gradient(to bottom, var(--color-wood-dark), var(--color-white));
+  height: 0;
 }
 
 /* Intro split layout — image | divider | text */
