@@ -63,4 +63,46 @@
     const preload = new Image();
     preload.src = img.src;
   });
+
+  // Mobile axonometry modal — clicking the position tile shows the colored unit
+  const modal = document.getElementById('axoModal');
+  const modalOverlay = document.getElementById('axoModalOverlay');
+  const modalUnit = document.getElementById('axoModalUnit');
+
+  function openAxoModal(card) {
+    if (!modal || !modalOverlay) return;
+    const unitId = card.getAttribute('data-unit-id');
+    const nameEl = card.querySelector('.ucard__name');
+    modalOverlay.src = `images/axo-${unitId}.png`;
+    modalOverlay.alt = nameEl ? `Position ${nameEl.textContent}` : '';
+    if (modalUnit) modalUnit.textContent = nameEl ? nameEl.textContent : '';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('axo-modal-open');
+  }
+
+  function closeAxoModal() {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('axo-modal-open');
+  }
+
+  document.querySelectorAll('.ucard__axo-tile').forEach((tile) => {
+    tile.addEventListener('click', (e) => {
+      const card = tile.closest('.ucard');
+      if (!card) return;
+      e.preventDefault();
+      openAxoModal(card);
+    });
+  });
+
+  if (modal) {
+    modal.querySelectorAll('[data-axo-close]').forEach((el) => {
+      el.addEventListener('click', closeAxoModal);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeAxoModal();
+    });
+  }
 })();

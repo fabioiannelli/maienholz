@@ -98,7 +98,6 @@
               <img class="axo__img axo__img--overlay" data-unit-id="C2.201" src="images/axo-C2.201.png" alt="">
             </div>
           </div>
-          <p class="axo-sticky__hint">Objekt in der Liste unten hovern, um es hier hervorzuheben</p>
         </div>
       </div>
 
@@ -733,6 +732,22 @@
         </div>
       </div>
     </section>
+
+    <!-- Axonometry modal (mobile: shows colored position for tapped unit) -->
+    <div class="axo-modal" id="axoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="axoModalTitle">
+      <div class="axo-modal__backdrop" data-axo-close></div>
+      <div class="axo-modal__dialog" role="document">
+        <button class="axo-modal__close" type="button" data-axo-close aria-label="Schliessen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <h3 class="axo-modal__title" id="axoModalTitle">Position in der Überbauung</h3>
+        <div class="axo-modal__stack">
+          <img class="axo-modal__base" src="images/axo-base.png" alt="Axonometrie Überbauung Maienholz">
+          <img class="axo-modal__overlay" id="axoModalOverlay" src="" alt="">
+        </div>
+        <p class="axo-modal__unit" id="axoModalUnit"></p>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->

@@ -345,3 +345,107 @@
     text-align: center;
   }
 }
+
+/* Axonometry modal — full-screen colored position view (mobile feature) */
+.axo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.axo-modal.is-open {
+  display: flex;
+}
+
+.axo-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(20, 17, 15, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.axo-modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background-color: var(--color-white);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  max-height: calc(100vh - 2 * var(--space-md));
+  overflow-y: auto;
+}
+
+.axo-modal__close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-wood-light);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.axo-modal__close:hover {
+  background-color: var(--color-cream);
+  border-color: var(--color-wood-medium);
+}
+
+.axo-modal__close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.axo-modal__title {
+  margin: 0 2.5rem 0.25rem 0;
+  font-size: 0.75rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.axo-modal__unit {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.axo-modal__stack {
+  position: relative;
+  width: 100%;
+  margin-top: 0.85rem;
+  aspect-ratio: 16 / 11;
+  background-color: var(--color-white);
+}
+
+.axo-modal__stack img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.axo-modal__overlay {
+  z-index: 2;
+}
+
+body.axo-modal-open {
+  overflow: hidden;
+}
