@@ -65,6 +65,34 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* Anmeldeformular link under contact details — arrow + text, left-aligned */
+.kontakt-grid__form-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.kontakt-grid__form-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.kontakt-grid__form-link:hover {
+  opacity: 0.7;
+}
+
+.kontakt-grid__form-link:hover svg {
+  transform: translateX(3px);
+}
+
 /* CTA section with background image */
 .cta-section {
   position: relative;
