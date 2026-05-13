@@ -1421,6 +1421,27 @@
   color: var(--color-text-light);
 }
 
+/* Concept frame — glassy cream container wrapping lead + text */
+.concept-frame {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(93rem, calc(100vw - 2rem));
+  max-width: none;
+  margin: 0;
+  padding: var(--space-lg) clamp(1.5rem, 3vw, 2.75rem);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 0 0 1px rgba(44, 40, 37, 0.06),
+    0 10px 30px rgba(44, 40, 37, 0.07),
+    0 30px 60px rgba(44, 40, 37, 0.06);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+}
+
 /* Concept lead — large two-tone display sentence (centered) */
 .concept-lead-wrap {
   margin-bottom: var(--space-md);
@@ -1435,7 +1456,7 @@
   line-height: 1.18;
   color: rgba(44, 40, 37, 0.36);
   margin: var(--space-sm) auto 0;
-  max-width: 52ch;
+  max-width: 62ch;
 }
 
 .concept-lead__highlight {
@@ -1443,13 +1464,94 @@
 }
 
 .concept-text {
-  max-width: 64rem;
+  max-width: 75rem;
   color: var(--color-text-light);
   font-size: 1.02rem;
   line-height: 1.8;
-  margin: 0 auto var(--space-lg);
+  margin: 0 auto;
   padding: 0 1.25rem;
   text-align: center;
+}
+
+.concept-frame .concept-text {
+  margin-bottom: 0;
+}
+
+/* Showcase band — full-width wavy-line backdrop hosting the dark block */
+.showcase-band {
+  position: relative;
+  margin-top: 100px;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.showcase-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 500' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='rgba(44,40,37,0.18)' stroke-width='1.1'%3E%3Cpath d='M-50,60 Q350,30 800,90 T1500,140'/%3E%3Cpath d='M-50,140 Q350,110 800,170 T1500,220'/%3E%3Cpath d='M-50,230 Q350,200 800,260 T1500,310'/%3E%3Cpath d='M-50,320 Q350,290 800,350 T1500,400'/%3E%3Cpath d='M-50,410 Q350,380 800,440 T1500,480'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) calc(50% - 42.25rem - 50px),
+    rgba(0, 0, 0, 0.3) calc(50% - 42.25rem),
+    rgba(0, 0, 0, 0.3) calc(50% + 42.25rem),
+    rgba(0, 0, 0, 1) calc(50% + 42.25rem + 50px),
+    rgba(0, 0, 0, 1) 100%);
+  mask-image: linear-gradient(to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) calc(50% - 42.25rem - 50px),
+    rgba(0, 0, 0, 0.3) calc(50% - 42.25rem),
+    rgba(0, 0, 0, 0.3) calc(50% + 42.25rem),
+    rgba(0, 0, 0, 1) calc(50% + 42.25rem + 50px),
+    rgba(0, 0, 0, 1) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.showcase-band .showcase--dark {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 84.5rem;
+  padding: 0 var(--space-sm);
+}
+
+.showcase-band .showcase--dark .showcase__inner {
+  aspect-ratio: auto;
+  min-height: 0;
+  height: auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.showcase-band .showcase--dark .showcase__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.72) 55%,
+    rgba(0, 0, 0, 0.78) 100%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.showcase-band .showcase--dark .showcase__content {
+  position: relative;
+  inset: auto;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 4vw, 3.5rem);
+  padding-bottom: calc(clamp(2.5rem, 5vw, 4rem) + 50px);
+}
+
+.showcase-band .showcase--dark .showcase__paragraph {
+  max-width: 64rem;
+}
+
+.showcase-band .showcase--dark .showcase__title {
+  font-family: var(--font-serif);
+  max-width: 42ch;
 }
 
 .concept-text p {

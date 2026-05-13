@@ -270,6 +270,11 @@
   .concept-text {
     padding: 0 1rem;
   }
+
+  .concept-frame {
+    padding: var(--space-md) 1.5rem;
+    border-radius: 1rem;
+  }
 }
 
 /* Mobile: <768px */
@@ -359,6 +364,11 @@
     font-size: 0.98rem;
     line-height: 1.7;
     padding: 0 0.5rem;
+  }
+
+  .concept-frame {
+    padding: var(--space-md) 1rem;
+    border-radius: 0.85rem;
   }
 
   /* Home intro on mobile — tighter image + title */
