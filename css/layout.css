@@ -564,6 +564,27 @@
   opacity: 0.65;
 }
 
+/* Clip container — the wordmark slides up from below when scrolled into view */
+.footer__brand-clip {
+  overflow: hidden;
+}
+
+/* Neutralize the generic [data-animate] effect on the clip — only the inner brand animates */
+.footer__brand-clip[data-animate] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.footer__brand-clip .footer__brand-xl {
+  transform: translateY(100%);
+  transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer__brand-clip.is-visible .footer__brand-xl {
+  transform: translateY(10px);
+}
+
 /* Large italic Maienholz wordmark below footer — fades top (dark) → bottom (white) */
 .footer__brand-xl {
   font-family: var(--font-serif);

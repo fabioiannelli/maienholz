@@ -7,7 +7,8 @@
       "PowerShell(Set-Content *)",
       "WebFetch(domain:www.espaciolanube.com)",
       "Bash(grep -iE \"\\\\.\\(docx?|doc\\)$\")",
-      "PowerShell(New-Item *)"
+      "PowerShell(New-Item *)",
+      "WebFetch(domain:dhero.studio)"
     ]
   }
 }
