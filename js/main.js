@@ -60,7 +60,8 @@
     else openMenu();
   });
 
-  overlay.querySelectorAll('.nav__link').forEach((link) => {
+  // Close menu when an actual link (not the dropdown toggle button) is clicked
+  overlay.querySelectorAll('a.nav__link, a.nav__dropdown-link').forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
 
@@ -89,11 +90,146 @@
   elements.forEach((el) => observer.observe(el));
 })();
 
+// Scroll-revealed text — word by word, linked to scroll position.
+// The wrap is taller than the viewport; its inner content sticks while the
+// user scrolls through it. Reveal happens during the first 60% of that
+// scroll distance; the remaining 40% leaves the fully-revealed text on
+// screen so the reader has time to take it in.
+(function () {
+  const blocks = document.querySelectorAll('[data-scroll-reveal]');
+  if (!blocks.length) return;
+
+  // Split each target's text into individual word spans (once)
+  blocks.forEach((block) => {
+    const target = block.querySelector('.scroll-reveal__text');
+    if (!target || target.dataset.split === '1') return;
+    const words = target.textContent.trim().split(/\s+/);
+    target.innerHTML = words
+      .map((w) => '<span class="reveal-word">' + w + '</span>')
+      .join(' ');
+    target.dataset.split = '1';
+  });
+
+  // Fraction of the wrap scroll distance over which the reveal happens.
+  // The remainder keeps the text in view as a reading pause.
+  const REVEAL_FRACTION = 0.6;
+
+  let ticking = false;
+
+  function update() {
+    blocks.forEach((block) => {
+      const target = block.querySelector('.scroll-reveal__text');
+      if (!target) return;
+      const words = target.querySelectorAll('.reveal-word');
+      if (!words.length) return;
+
+      const rect = block.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const scrollable = rect.height - vh;
+      if (scrollable <= 0) return;
+
+      // How far we've scrolled into the wrap (0 when its top hits viewport top).
+      const scrolled = -rect.top;
+      let wrapProgress = scrolled / scrollable;
+      wrapProgress = Math.max(0, Math.min(1, wrapProgress));
+
+      // Map [0, REVEAL_FRACTION] of wrapProgress to [0, 1] of revealProgress.
+      let revealProgress = wrapProgress / REVEAL_FRACTION;
+      revealProgress = Math.max(0, Math.min(1, revealProgress));
+
+      // Smoothstep easing
+      const eased = revealProgress * revealProgress * (3 - 2 * revealProgress);
+      const visibleCount = Math.floor(eased * words.length);
+
+      words.forEach((word, i) => {
+        word.classList.toggle('is-visible', i < visibleCount);
+      });
+    });
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+
 // Active nav link
 (function () {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav__link').forEach((link) => {
     const href = link.getAttribute('href');
-    link.classList.toggle('nav__link--active', href === currentPage);
+    if (href) link.classList.toggle('nav__link--active', href === currentPage);
+  });
+
+  // Dropdown sub-link active + parent trigger active
+  const dropdownChildPages = ['wohnungen.html', 'reihenhaeuser.html'];
+  document.querySelectorAll('.nav__dropdown-link').forEach((link) => {
+    const href = link.getAttribute('href');
+    link.classList.toggle('nav__dropdown-link--active', href === currentPage);
+  });
+  if (dropdownChildPages.includes(currentPage)) {
+    document.querySelectorAll('.nav__link--dropdown').forEach((trigger) => {
+      trigger.classList.add('nav__link--dropdown-active');
+    });
+  }
+})();
+
+// Dropdown nav (desktop: hover + click; mobile: click toggles inline expansion)
+(function () {
+  const dropdowns = document.querySelectorAll('.nav__item--dropdown');
+  if (!dropdowns.length) return;
+
+  const desktopMQ = window.matchMedia('(min-width: 1024px)');
+
+  function openDropdown(dd) {
+    dd.classList.add('is-open');
+    const trigger = dd.querySelector('.nav__link--dropdown');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeDropdown(dd) {
+    dd.classList.remove('is-open');
+    const trigger = dd.querySelector('.nav__link--dropdown');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  dropdowns.forEach((dd) => {
+    const trigger = dd.querySelector('.nav__link--dropdown');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (dd.classList.contains('is-open')) closeDropdown(dd);
+      else openDropdown(dd);
+    });
+
+    dd.addEventListener('mouseenter', () => {
+      if (desktopMQ.matches) openDropdown(dd);
+    });
+    dd.addEventListener('mouseleave', () => {
+      if (desktopMQ.matches) closeDropdown(dd);
+    });
+  });
+
+  // Outside click closes all open dropdowns (desktop only — on mobile the overlay handles its own dismissal)
+  document.addEventListener('click', (e) => {
+    if (!desktopMQ.matches) return;
+    dropdowns.forEach((dd) => {
+      if (!dd.contains(e.target)) closeDropdown(dd);
+    });
+  });
+
+  // Esc closes dropdowns
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    dropdowns.forEach((dd) => closeDropdown(dd));
   });
 })();

@@ -29,7 +29,16 @@
           <ul class="nav__list">
             <li><a href="index.html" class="nav__link">Home</a></li>
             <li><a href="projekt.html" class="nav__link">Projekt</a></li>
-            <li><a href="wohnungen.html" class="nav__link">Mietobjekte</a></li>
+            <li class="nav__item nav__item--dropdown">
+              <button type="button" class="nav__link nav__link--dropdown" aria-haspopup="true" aria-expanded="false">
+                Mietobjekte
+                <svg class="nav__caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="nav__dropdown">
+                <a href="wohnungen.html" class="nav__dropdown-link">Wohnungen</a>
+                <a href="reihenhaeuser.html" class="nav__dropdown-link">Reiheneinfamilienhäuser</a>
+              </div>
+            </li>
             <li><a href="lage.html" class="nav__link">Lage</a></li>
             <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
             <li class="nav__cta-wrap"><a href="kontakt.html" class="nav__cta">Besichtigung vereinbaren</a></li>
@@ -38,7 +47,16 @@
         <ul class="nav__list" id="navDesktop">
           <li><a href="index.html" class="nav__link">Home</a></li>
           <li><a href="projekt.html" class="nav__link">Projekt</a></li>
-          <li><a href="wohnungen.html" class="nav__link">Mietobjekte</a></li>
+          <li class="nav__item nav__item--dropdown">
+            <button type="button" class="nav__link nav__link--dropdown" aria-haspopup="true" aria-expanded="false">
+              Mietobjekte
+              <svg class="nav__caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav__dropdown">
+              <a href="wohnungen.html" class="nav__dropdown-link">Wohnungen</a>
+              <a href="reihenhaeuser.html" class="nav__dropdown-link">Reiheneinfamilienhäuser</a>
+            </div>
+          </li>
           <li><a href="lage.html" class="nav__link">Lage</a></li>
           <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
         </ul>
@@ -161,7 +179,8 @@
           <ul class="footer__links">
             <li><a href="index.html">Home</a></li>
             <li><a href="projekt.html">Projekt</a></li>
-            <li><a href="wohnungen.html">Mietobjekte</a></li>
+            <li><a href="wohnungen.html">Wohnungen</a></li>
+            <li><a href="reihenhaeuser.html">Reiheneinfamilienhäuser</a></li>
             <li><a href="lage.html">Lage</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
@@ -169,9 +188,8 @@
         <div>
           <p class="footer__title">Informationen</p>
           <ul class="footer__links">
-            <li><a href="plans/GESAMT_SITUATION.pdf" target="_blank">Situationsplan</a></li>
-            <li><a href="plans/GESAMT_AXONOMETRIE.pdf" target="_blank">Axonometrie</a></li>
-            <li><a href="plans/130.500.1_FARB-_und_MATERIALKONZEPT.pdf" target="_blank">Farb- &amp; Materialkonzept</a></li>
+            <li><a href="images/Adressen%20Maienholz.png" target="_blank">Situationsplan</a></li>
+            <li><a href="plans/Umgebungsplan.pdf" target="_blank">Umgebungsplan</a></li>
             <li><a href="plans/Anmeldeformular.pdf" target="_blank">Anmeldeformular</a></li>
           </ul>
         </div>

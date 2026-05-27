@@ -1,46 +1,27 @@
-/* Layout wrapper: content left, sticky axonometry right */
-.axo-layout {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(400px, 44%);
-  gap: var(--space-md);
-  max-width: 1480px;
+/* Centered axonometry feature above the unit grid */
+.axo-feature {
+  max-width: 560px;
   margin: 0 auto;
-  padding: var(--space-md) var(--space-md) var(--space-xl) calc(var(--space-md) + 80px);
-  align-items: start;
+  padding: 0 var(--space-md);
 }
 
-/* Sticky axonometry column (right) — vertically centered in viewport */
-.axo-sticky {
-  grid-column: 2;
-  grid-row: 1;
-  position: sticky;
-  top: var(--header-height);
-  height: calc(100vh - var(--header-height));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
+/* Tight spacing for the axo + units sections so everything stays in view */
+.section--axo {
+  padding-bottom: var(--space-md);
 }
 
-.axo-sticky__inner {
-  width: 100%;
-  padding: var(--space-sm);
+.section--units {
+  padding-top: var(--space-md);
 }
 
-.axo-sticky__hint {
+.axo-feature__caption {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--color-text-light);
-  margin-top: 0.8rem;
-  opacity: 0.6;
-}
-
-/* Content column (left) */
-.axo-content {
-  grid-column: 1;
-  grid-row: 1;
-  min-width: 0;
+  margin: var(--space-sm) 0 0;
+  opacity: 0.75;
 }
 
 /* Axonometry image stack */
@@ -80,22 +61,24 @@
   opacity: 1;
 }
 
-/* Unit grid */
+/* Unit grid — 4 cards per row on desktop */
 .unit-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-sm);
 }
 
-/* Unit card — new detailed style */
+/* Unit card */
 .ucard {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  padding: 1.4rem;
+  padding: 1.2rem;
   transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
   cursor: default;
 }
@@ -108,7 +91,6 @@
   transform: translateY(-3px);
 }
 
-/* Glow effect on hover */
 .ucard::before {
   content: '';
   position: absolute;
@@ -128,15 +110,16 @@
 /* Badge */
 .ucard__badge {
   display: inline-block;
-  padding: 0.2rem 0.7rem;
-  font-size: 0.7rem;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.66rem;
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   background-color: var(--color-offwhite);
   color: var(--color-text-light);
   border-radius: var(--radius-xl);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.7rem;
+  align-self: flex-start;
 }
 
 .ucard__badge--attika {
@@ -146,72 +129,116 @@
 
 /* Name & rooms */
 .ucard__name {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: var(--fw-semibold);
   letter-spacing: -0.01em;
-  margin-bottom: 0.15rem;
+  margin: 0 0 0.15rem;
 }
 
 .ucard__rooms {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-text-light);
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
-/* Details grid */
+/* Details grid — 6 items in 3 columns × 2 rows */
 .ucard__details {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-  padding-top: 0.8rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem 0.8rem;
+  margin-bottom: 0.4rem;
+  padding-top: 0.7rem;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .ucard__label {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   color: var(--color-text-light);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   margin-bottom: 0.1rem;
+  text-transform: uppercase;
 }
 
 .ucard__value {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: var(--fw-medium);
   letter-spacing: -0.01em;
+  color: var(--color-text);
 }
 
-.ucard__value--price {
-  color: var(--color-wood-dark);
-  font-weight: var(--fw-semibold);
+.ucard__value--inquiry {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
-/* Actions */
+/* Actions: floor plans + glassy CTA, all same size/height in one row */
 .ucard__actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.35rem;
-  padding-top: 0.6rem;
+  padding-top: 0.75rem;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-top: auto;
+}
+
+.ucard__link,
+.ucard__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.74rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-xl);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .ucard__link {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.75rem;
-  font-weight: var(--fw-medium);
-  color: var(--color-text);
   background-color: var(--color-offwhite);
-  border-radius: var(--radius-xl);
-  text-decoration: none;
-  transition: all var(--transition-fast);
+  border: 1px solid transparent;
 }
 
 .ucard__link:hover {
   background-color: var(--color-wood-dark);
   color: var(--color-white);
+}
+
+/* Glassy "Jetzt anfragen" CTA — same size as ucard__link, just glass styling */
+.ucard__cta {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 3px 10px rgba(44, 40, 37, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  margin-left: auto;
+}
+
+.ucard__cta svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.ucard__cta:hover {
+  background: var(--color-wood-dark);
+  color: var(--color-white);
+  border-color: var(--color-wood-dark);
+  box-shadow: 0 5px 14px rgba(44, 40, 37, 0.18);
+}
+
+.ucard__cta:hover svg {
+  transform: translateX(2px);
 }
 
 /* Axonometry tile — only visible on mobile/tablet */
@@ -309,24 +336,20 @@
   color: var(--color-wood-dark);
 }
 
-/* Tablet: collapse to single column, hide sticky axo, reveal per-card tile */
+/* Tablet: 2 cards per row, reveal per-card axo tile */
+@media (max-width: 1199px) {
+  .unit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1023px) {
-  .axo-layout {
-    display: block;
-    padding: var(--space-md) var(--space-sm) var(--space-lg);
-  }
-
-  .axo-sticky {
-    display: none;
-  }
-
-  .axo-content {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
   .ucard__axo-tile {
     display: flex;
+  }
+
+  .axo-feature {
+    max-width: 640px;
   }
 }
 
@@ -334,10 +357,6 @@
 @media (max-width: 767px) {
   .unit-grid {
     grid-template-columns: 1fr;
-  }
-
-  .ucard__details {
-    grid-template-columns: 1fr 1fr;
   }
 
   .parking-info {

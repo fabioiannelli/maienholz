@@ -1432,6 +1432,62 @@
   transform: translateX(3px);
 }
 
+/* Scroll-revealed text — word-by-word reveal linked to scroll position.
+   The section pins (sticky) during the reveal so the text stays in view
+   for a moment after fully revealed before scrolling continues. */
+.scroll-reveal-section {
+  padding: 0;
+}
+
+.scroll-reveal-wrap {
+  position: relative;
+  height: 220vh;
+}
+
+.scroll-reveal-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-reveal {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  text-align: center;
+}
+
+.scroll-reveal__text {
+  font-family: var(--font-primary);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Spans only exist after JS splits the text — initial muted state, animated to full color on scroll */
+.reveal-word {
+  display: inline-block;
+  color: rgba(44, 40, 37, 0.25);
+  transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: color;
+}
+
+.reveal-word.is-visible {
+  color: var(--color-text);
+}
+
+.reveal-word em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
 /* Eyebrow badge — small chip with subtle grey border */
 .eyebrow-badge {
   display: inline-flex;
