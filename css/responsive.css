@@ -380,8 +380,8 @@
   }
 
   .hero--half {
-    height: 45vh;
-    min-height: 300px;
+    height: 30vh;
+    min-height: 220px;
   }
 
   .grid--2,

@@ -7,11 +7,16 @@
 
 /* Tight spacing for the axo + units sections so everything stays in view */
 .section--axo {
+  padding-top: var(--space-md);
   padding-bottom: var(--space-md);
 }
 
 .section--units {
   padding-top: var(--space-md);
+}
+
+.section--units .section__title {
+  margin-bottom: var(--space-md);
 }
 
 .axo-feature__caption {
@@ -76,11 +81,51 @@
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(196, 180, 154, 0.45);
   border-radius: var(--radius-lg);
   padding: 1.2rem;
   transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
   cursor: default;
+}
+
+/* Availability pill — top right on desktop, on the right (left of toggle) on mobile */
+.ucard__status {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.62rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  line-height: 1.4;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ucard__status--available {
+  color: var(--color-success);
+}
+
+.ucard__status--rented {
+  color: var(--color-error);
+}
+
+/* Slight left indent so text content doesn't sit flush against the
+   thin dividing strokes (border-top of .ucard__actions, etc.) */
+.ucard__name,
+.ucard__rooms,
+.ucard__details,
+.ucard__actions {
+  padding-left: 0.4rem;
 }
 
 .ucard:hover,
@@ -162,10 +207,12 @@
 
 .ucard__value {
   display: block;
+  font-family: var(--font-primary);
   font-size: 0.86rem;
   font-weight: var(--fw-medium);
   letter-spacing: -0.01em;
   color: var(--color-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .ucard__value--inquiry {
@@ -211,34 +258,47 @@
   color: var(--color-white);
 }
 
-/* Glassy "Jetzt anfragen" CTA — same size as ucard__link, just glass styling */
+/* Liquid-glass "Jetzt anfragen" CTA — multi-layer glass with bouncy timing */
 .ucard__cta {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow:
-    0 3px 10px rgba(44, 40, 37, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
   margin-left: auto;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 6px 10px rgba(0, 0, 0, 0.14),
+    0 0 18px rgba(0, 0, 0, 0.06),
+    inset 1.5px 1.5px 1px 0 rgba(255, 255, 255, 0.7),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.45);
+  transition:
+    background-color 500ms cubic-bezier(0.175, 0.885, 0.32, 1.6),
+    color 400ms ease,
+    border-color 400ms ease,
+    box-shadow 500ms cubic-bezier(0.175, 0.885, 0.32, 1.6),
+    transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.6);
 }
 
 .ucard__cta svg {
   width: 11px;
   height: 11px;
   flex-shrink: 0;
-  transition: transform var(--transition-fast);
+  transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.6);
 }
 
 .ucard__cta:hover {
   background: var(--color-wood-dark);
   color: var(--color-white);
   border-color: var(--color-wood-dark);
-  box-shadow: 0 5px 14px rgba(44, 40, 37, 0.18);
+  transform: scale(1.06);
+  box-shadow:
+    0 10px 22px rgba(44, 40, 37, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .ucard__cta:hover svg {
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 /* Axonometry tile — only visible on mobile/tablet */
@@ -306,22 +366,32 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-top: var(--space-lg);
+  max-width: 1080px;
+  margin: var(--space-lg) auto 0;
   padding: var(--space-md);
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid var(--color-wood-light);
   border-radius: var(--radius-lg);
   font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--color-text);
 }
 
 .parking-info__icon {
-  width: 40px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
-  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parking-info__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .parking-info__icon svg {
@@ -362,6 +432,170 @@
   .parking-info {
     flex-direction: column;
     text-align: center;
+  }
+
+  /* Collapsed ucard: only badge / name / rooms visible until toggle clicked */
+  .ucard {
+    padding: 0.7rem 1.1rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(247, 245, 242, 0.7) 100%
+    );
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid var(--color-wood-light);
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+      inset -1px -1px 0 rgba(255, 255, 255, 0.4),
+      0 1px 3px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  /* Reserve space on the right for status pill + toggle */
+  .ucard__name,
+  .ucard__rooms {
+    padding-right: 7.25rem;
+  }
+
+  /* Mobile collapsed: name + rooms vertically centered in the card */
+  .ucard {
+    justify-content: center;
+    min-height: 4.5rem;
+  }
+
+  .ucard.ucard--open {
+    justify-content: flex-start;
+    min-height: 0;
+  }
+
+  /* No floor badge on mobile */
+  .ucard__badge {
+    display: none;
+  }
+
+  /* Status sits left of the toggle, anchored from the top so it doesn't
+     move when the card opens (matches the collapsed vertical center). */
+  .ucard__status {
+    top: 1.7rem;
+    right: 3.6rem;
+    left: auto;
+    transform: none;
+    padding: 0.18rem 0.55rem;
+    font-size: 0.55rem;
+  }
+
+  .ucard.ucard--open {
+    padding-bottom: 1.1rem;
+  }
+
+  /* On mobile the 3-column details grid overflows because long values like
+     "CHF 3'250.00" force columns wider than 1fr (CSS grid items default to
+     min-width: auto). Use 2 cols + minmax(0,1fr) so the card width never grows. */
+  .ucard__details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ucard__detail {
+    min-width: 0;
+  }
+
+  /* All action buttons share one row at equal height — drop the auto-push
+     that sends the CTA to its own line on narrow screens. */
+  .ucard__actions {
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+  }
+
+  .ucard__cta {
+    margin-left: 0;
+  }
+
+  .ucard__link,
+  .ucard__cta {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.72rem;
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .ucard__badge {
+    margin-bottom: 0.35rem;
+  }
+
+  .ucard__rooms {
+    margin-bottom: 0;
+  }
+
+  .ucard.ucard--open .ucard__rooms {
+    margin-bottom: 0.85rem;
+  }
+
+  .ucard__details,
+  .ucard__actions,
+  .ucard__axo-tile {
+    display: none;
+  }
+
+  .ucard.ucard--open .ucard__details {
+    display: grid;
+  }
+
+  .ucard.ucard--open .ucard__actions {
+    display: flex;
+  }
+
+  .ucard.ucard--open .ucard__axo-tile {
+    display: flex;
+  }
+
+  .ucard__toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.9rem;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--color-wood-light);
+    background: var(--color-offwhite);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+    z-index: 2;
+  }
+
+  .ucard__toggle:hover {
+    background: var(--color-cream);
+    border-color: var(--color-wood-medium);
+  }
+
+  .ucard__toggle svg {
+    width: 12px;
+    height: 8px;
+    transition: transform var(--transition-base);
+  }
+
+  .ucard.ucard--open .ucard__toggle {
+    top: 1.1rem;
+    transform: translateY(0);
+  }
+
+  .ucard.ucard--open .ucard__toggle svg {
+    transform: rotate(180deg);
+  }
+}
+
+/* Hide toggle on tablet / desktop — full card content is always visible there */
+@media (min-width: 768px) {
+  .ucard__toggle {
+    display: none;
   }
 }
 

@@ -233,3 +233,89 @@
     dropdowns.forEach((dd) => closeDropdown(dd));
   });
 })();
+
+// Mobile collapse for unit cards (ucard) — adds a toggle that reveals
+// details/actions/axo-tile. Also injects an availability status pill.
+// Toggle is only visible on small screens via CSS. Status defaults to
+// "available"; set data-status="rented" on a .ucard to flip it.
+(function () {
+  const cards = document.querySelectorAll('.ucard');
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    const isRented = card.dataset.status === 'rented';
+    const status = document.createElement('span');
+    status.className = 'ucard__status ucard__status--' + (isRented ? 'rented' : 'available');
+    status.textContent = isRented ? 'Vermietet' : 'Verfügbar';
+    card.prepend(status);
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'ucard__toggle';
+    toggle.setAttribute('aria-label', 'Details anzeigen');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML =
+      '<svg viewBox="0 0 12 8" aria-hidden="true">' +
+      '<path d="M1 1.5L6 6.5L11 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</svg>';
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = card.classList.toggle('ucard--open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Details ausblenden' : 'Details anzeigen');
+    });
+    card.appendChild(toggle);
+  });
+})();
+
+// Smooth-scroll hero — clip-path window expands as the user scrolls through
+// the section. Mirrors the framer-motion useScroll/useTransform behaviour but
+// uses plain rAF + getBoundingClientRect for performance.
+(function () {
+  const heroes = document.querySelectorAll('[data-impression-hero]');
+  if (!heroes.length) return;
+
+  const SCROLL_HEIGHT = 1500;
+  const INITIAL_CLIP = 25;
+  const FINAL_CLIP = 75;
+  const INITIAL_BG = 170;
+  const FINAL_BG = 100;
+
+  let ticking = false;
+
+  const update = () => {
+    heroes.forEach((hero) => {
+      const sticky = hero.querySelector('[data-impression-hero-bg]');
+      if (!sticky) return;
+
+      const rect = hero.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / SCROLL_HEIGHT));
+      const bgProgress = Math.max(0, Math.min(1, scrolled / (SCROLL_HEIGHT + 500)));
+
+      const clipStart = INITIAL_CLIP * (1 - progress);
+      const clipEnd = FINAL_CLIP + (100 - FINAL_CLIP) * progress;
+      const bgSize = INITIAL_BG - (INITIAL_BG - FINAL_BG) * bgProgress;
+
+      sticky.style.clipPath =
+        'polygon(' + clipStart + '% ' + clipStart + '%, ' +
+        clipEnd + '% ' + clipStart + '%, ' +
+        clipEnd + '% ' + clipEnd + '%, ' +
+        clipStart + '% ' + clipEnd + '%)';
+      sticky.style.backgroundSize = bgSize + '%';
+    });
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  };
+
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+})();
