@@ -464,6 +464,26 @@
   color: var(--color-white);
 }
 
+/* Button with directional arrow — initial NE (outward), hover rotates to up */
+.btn.btn--with-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  line-height: 1;
+}
+
+.btn--with-arrow svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transform: rotate(-45deg);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn--with-arrow:hover svg {
+  transform: rotate(-90deg);
+}
+
 .hero__scroll {
   position: absolute;
   bottom: var(--space-md);

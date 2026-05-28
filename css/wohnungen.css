@@ -366,8 +366,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  max-width: 1080px;
-  margin: var(--space-lg) auto 0;
   padding: var(--space-md);
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(10px) saturate(150%);
@@ -377,6 +375,14 @@
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-text);
+}
+
+/* Info row: parking (wide) + bezug date (narrower), full container width */
+.info-row {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
 }
 
 .parking-info__icon {
@@ -432,6 +438,10 @@
   .parking-info {
     flex-direction: column;
     text-align: center;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
   }
 
   /* Collapsed ucard: only badge / name / rooms visible until toggle clicked */
