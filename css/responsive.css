@@ -569,6 +569,27 @@
     gap: 0.5rem;
   }
 
+  /* On mobile the with-arrow button needs full width so the text can sit
+     centered, with the arrow pinned to the right edge as its own element. */
+  .hero__buttons .btn.btn--with-arrow {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .hero__buttons .btn.btn--with-arrow svg {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  .hero__buttons .btn.btn--with-arrow:hover svg {
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
   .footer__grid {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-sm);
@@ -616,6 +637,14 @@
   .hero__title {
     font-size: clamp(2.2rem, 11vw, 3.5rem);
     letter-spacing: -0.03em;
+  }
+
+  /* Long single-word titles (e.g. "Reiheneinfamilienhäuser") shrink further
+     so the whole word fits on narrow screens without overflow. */
+  .hero__title--long {
+    font-size: clamp(1.5rem, 6.5vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 
   .hero__buttons {
