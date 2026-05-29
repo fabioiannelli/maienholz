@@ -30,9 +30,11 @@
   animation: intro-title-scale 2600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Words fade in left-to-right with 200ms stagger ("written" effect). */
+/* Words fade in left-to-right with 200ms stagger ("written" effect).
+   Kept as inline (not inline-block) so the title wraps identically to the
+   plain-text .hero__title in the real hero — important on mobile where the
+   title may wrap to two lines. */
 .intro__word {
-  display: inline-block;
   opacity: 0;
   animation: intro-word 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
