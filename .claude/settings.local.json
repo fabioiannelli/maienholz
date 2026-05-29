@@ -9,7 +9,8 @@
       "Bash(grep -iE \"\\\\.\\(docx?|doc\\)$\")",
       "PowerShell(New-Item *)",
       "WebFetch(domain:dhero.studio)",
-      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"H:\\\\2026.01.22 Planausgabe\\\\maienholz\\\\wohnungen.html\"\\)[0..2]; if \\($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF\\) { \"BOM\" } else { \"no BOM\" })"
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"H:\\\\2026.01.22 Planausgabe\\\\maienholz\\\\wohnungen.html\"\\)[0..2]; if \\($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF\\) { \"BOM\" } else { \"no BOM\" })",
+      "PowerShell(Remove-Item *)"
     ]
   }
 }
