@@ -1,9 +1,10 @@
-// Contact form validation and submission
+// Contact form validation and submission (Web3Forms)
 (function () {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
   const successMsg = document.getElementById('formSuccess');
+  const FALLBACK_EMAIL = 'fi@hamero.ch';
 
   function showError(input, message) {
     input.classList.add('kontakt-form__input--error');
@@ -21,6 +22,25 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
+  function collectObjekte() {
+    return Array.from(form.querySelectorAll('input[name="objekt[]"]:checked'))
+      .map((c) => c.value);
+  }
+
+  function buildMailtoBody() {
+    const get = (n) => form.querySelector('[name="' + n + '"]')?.value?.trim() || '—';
+    const objekte = collectObjekte();
+    return (
+      'Vorname: ' + get('firstname') +
+      '\nNachname: ' + get('lastname') +
+      '\nE-Mail: ' + get('email') +
+      '\nTelefon: ' + get('phone') +
+      '\nBetreff: ' + get('betreff') +
+      '\nInteressierte Objekte: ' + (objekte.length ? objekte.join(', ') : '—') +
+      '\n\nNachricht:\n' + get('message')
+    );
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     let valid = true;
@@ -28,20 +48,20 @@
     const firstname = form.querySelector('[name="firstname"]');
     const lastname = form.querySelector('[name="lastname"]');
     const email = form.querySelector('[name="email"]');
+    const phone = form.querySelector('[name="phone"]');
+    const betreff = form.querySelector('[name="betreff"]');
     const message = form.querySelector('[name="message"]');
 
-    [firstname, lastname, email, message].forEach(clearError);
+    [firstname, lastname, email, phone, betreff, message].forEach(clearError);
 
     if (firstname && !firstname.value.trim()) {
       showError(firstname, 'Bitte geben Sie Ihren Vornamen ein.');
       valid = false;
     }
-
     if (lastname && !lastname.value.trim()) {
       showError(lastname, 'Bitte geben Sie Ihren Nachnamen ein.');
       valid = false;
     }
-
     if (!email.value.trim()) {
       showError(email, 'Bitte geben Sie Ihre E-Mail-Adresse ein.');
       valid = false;
@@ -49,7 +69,14 @@
       showError(email, 'Bitte geben Sie eine gültige E-Mail-Adresse ein.');
       valid = false;
     }
-
+    if (phone && !phone.value.trim()) {
+      showError(phone, 'Bitte geben Sie Ihre Telefonnummer ein.');
+      valid = false;
+    }
+    if (betreff && !betreff.value) {
+      showError(betreff, 'Bitte wählen Sie einen Betreff.');
+      valid = false;
+    }
     if (!message.value.trim()) {
       showError(message, 'Bitte geben Sie eine Nachricht ein.');
       valid = false;
@@ -57,45 +84,55 @@
 
     if (!valid) return;
 
-    // Try Formspree submission
+    // Build payload for Web3Forms
     const formData = new FormData(form);
+
+    // Use the visitor's email as reply-to so user can reply directly to interested party
+    formData.append('replyto', email.value.trim());
+
+    // Flatten selected Objekte into a single readable string in addition to objekt[]
+    const objekte = collectObjekte();
+    formData.append('Objekte (gewählt)', objekte.length ? objekte.join(', ') : '—');
+
+    // Compose a nicer email subject including the betreff
+    const subjectBase = 'Maienholz Anfrage';
+    const betreffVal = betreff?.value || '';
+    formData.set('subject', betreffVal ? subjectBase + ': ' + betreffVal : subjectBase);
+
+    const submitBtns = form.querySelectorAll('button[type="submit"]');
+    submitBtns.forEach((b) => (b.disabled = true));
 
     fetch(form.action, {
       method: 'POST',
       body: formData,
       headers: { Accept: 'application/json' },
     })
-      .then((response) => {
-        if (response.ok) {
+      .then((response) => response.json().catch(() => ({})).then((data) => ({ ok: response.ok, data })))
+      .then(({ ok, data }) => {
+        if (ok && (data.success === true || data.success === undefined)) {
           form.style.display = 'none';
           if (successMsg) successMsg.style.display = 'block';
         } else {
-          // Fallback: open mailto
-          const subject = encodeURIComponent('Anfrage Überbauung Maienholz');
-          const body = encodeURIComponent(
-            'Name: ' + (firstname?.value || '') + ' ' + (lastname?.value || '') +
-              '\nE-Mail: ' + email.value +
-              '\nTelefon: ' + (form.querySelector('[name="phone"]')?.value || '') +
-              '\nObjekt: ' + (form.querySelector('[name="objekt"]')?.value || '') +
-              '\nBezugstermin: ' + (form.querySelector('[name="bezug"]')?.value || '') +
-              '\n\n' + message.value
-          );
-          window.location.href = 'mailto:info@hamero.ch?subject=' + subject + '&body=' + body;
+          // Fallback: open mailto with all fields prefilled
+          const subject = encodeURIComponent(subjectBase + (betreffVal ? ': ' + betreffVal : ''));
+          const body = encodeURIComponent(buildMailtoBody());
+          window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
         }
       })
       .catch(() => {
-        // Fallback: open mailto
-        const subject = encodeURIComponent('Anfrage Überbauung Maienholz');
-        const body = encodeURIComponent(
-          'Name: ' + name.value + '\nE-Mail: ' + email.value + '\nTelefon: ' + (form.querySelector('[name="phone"]')?.value || '') + '\n\n' + message.value
-        );
-        window.location.href = 'mailto:info@hamero.ch?subject=' + subject + '&body=' + body;
+        const subject = encodeURIComponent(subjectBase + (betreffVal ? ': ' + betreffVal : ''));
+        const body = encodeURIComponent(buildMailtoBody());
+        window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
+      })
+      .finally(() => {
+        submitBtns.forEach((b) => (b.disabled = false));
       });
   });
 
   // Clear errors on input
   form.querySelectorAll('input, textarea, select').forEach((input) => {
     input.addEventListener('input', () => clearError(input));
+    input.addEventListener('change', () => clearError(input));
   });
 
   // Multi-select object dropdown: update trigger label with count
@@ -121,7 +158,6 @@
 
     checkboxes.forEach((cb) => cb.addEventListener('change', updateLabel));
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (objektDropdown.open && !objektDropdown.contains(e.target)) {
         objektDropdown.open = false;

@@ -99,7 +99,14 @@
 
           <!-- Right: form -->
           <div class="kontakt-grid__right">
-            <form id="contactForm" class="kontakt-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form id="contactForm" class="kontakt-form" action="https://api.web3forms.com/submit" method="POST">
+              <!-- Web3Forms config: delivers submissions to fi@hamero.ch -->
+              <input type="hidden" name="access_key" value="00b19baa-5664-44bc-88a1-528a408f074f">
+              <input type="hidden" name="subject" value="Neue Anfrage über Maienholz Website">
+              <input type="hidden" name="from_name" value="Maienholz Website">
+              <!-- Honeypot field to filter spam -->
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
               <div class="kontakt-form__row">
                 <div class="kontakt-form__group">
                   <label class="kontakt-form__label" for="vorname">Vorname*</label>
@@ -124,7 +131,7 @@
 
               <div class="kontakt-form__group">
                 <label class="kontakt-form__label" for="betreff">Betreff*</label>
-                <select class="kontakt-form__select" id="betreff" name="subject" required>
+                <select class="kontakt-form__select" id="betreff" name="betreff" required>
                   <option value="">Bitte wählen</option>
                   <option value="Besichtigung">Besichtigung vereinbaren</option>
                   <option value="Mietobjekt">Frage zu einem Mietobjekt</option>
