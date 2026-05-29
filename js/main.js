@@ -1,3 +1,34 @@
+// Homepage intro splash
+(function () {
+  const intro = document.getElementById('intro');
+  if (!intro) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    intro.remove();
+    return;
+  }
+
+  const html = document.documentElement;
+  const body = document.body;
+  const prevHtmlOverflow = html.style.overflow;
+  const prevBodyOverflow = body.style.overflow;
+  html.style.overflow = 'hidden';
+  body.style.overflow = 'hidden';
+
+  const HOLD = 2600;
+  const FADE = 800;
+
+  setTimeout(() => {
+    intro.classList.add('is-fading');
+    setTimeout(() => {
+      intro.remove();
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+    }, FADE);
+  }, HOLD);
+})();
+
 // Header contrast switching — dark on hero, light on white sections
 (function () {
   const header = document.getElementById('header');

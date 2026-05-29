@@ -14,8 +14,25 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/intro.css">
 </head>
 <body>
+  <!-- Intro splash (homepage only). Mirrors the hero structure exactly so the
+       title's final position matches the hero title once the overlay fades. -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="hero__content">
+      <h1 class="hero__title"><span class="intro__word intro__word--w1">Willkommen</span> <span class="intro__word intro__word--w2">im</span> <em class="intro__word intro__word--w3">Maienholz.</em></h1>
+      <p class="hero__subtitle">Exklusives Wohnen in naturnaher Bestlage.</p>
+      <div class="hero__buttons">
+        <span class="btn btn--hero-light">Vermietungsbroschüre</span>
+        <span class="btn btn--hero-dark btn--with-arrow">
+          Bezug ab 1. Oktober 2026
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+    <div class="intro__brand">Maienholz</div>
+  </div>
   <!-- Header -->
   <header class="header" id="header">
     <div class="header__inner">
