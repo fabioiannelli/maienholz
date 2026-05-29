@@ -1,4 +1,5 @@
-// Homepage intro splash
+// Homepage intro splash — only shows on first visit per session, or on hard reload.
+// Skipped when navigating to home from another page within the site (e.g. back from /kontakt).
 (function () {
   const intro = document.getElementById('intro');
   if (!intro) return;
@@ -8,6 +9,24 @@
     intro.remove();
     return;
   }
+
+  // Determine navigation type. 'reload' = F5/Ctrl+R; 'navigate' = first entry, link click, typed URL;
+  // 'back_forward' = browser back/forward button.
+  const navEntry = performance.getEntriesByType('navigation')[0];
+  const navType = navEntry ? navEntry.type
+    : (performance.navigation && performance.navigation.type === 1 ? 'reload' : 'navigate');
+
+  const seenThisSession = sessionStorage.getItem('maienholz_intro_shown') === '1';
+
+  // Show on hard reload regardless; otherwise only on the first homepage view of the session.
+  const shouldShow = navType === 'reload' || !seenThisSession;
+
+  if (!shouldShow) {
+    intro.remove();
+    return;
+  }
+
+  sessionStorage.setItem('maienholz_intro_shown', '1');
 
   const html = document.documentElement;
   const body = document.body;
