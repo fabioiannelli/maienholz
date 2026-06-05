@@ -287,16 +287,20 @@
 // Mobile collapse for unit cards (ucard) — adds a toggle that reveals
 // details/actions/axo-tile. Also injects an availability status pill.
 // Toggle is only visible on small screens via CSS. Status defaults to
-// "available"; set data-status="rented" on a .ucard to flip it.
+// "available" (green "Verfügbar"); set data-status="rented" for a red
+// "Vermietet" or data-status="reserved" for a red "Reserviert".
 (function () {
   const cards = document.querySelectorAll('.ucard');
   if (!cards.length) return;
 
   cards.forEach((card) => {
-    const isRented = card.dataset.status === 'rented';
+    const statusVal = card.dataset.status;
+    const isUnavailable = statusVal === 'rented' || statusVal === 'reserved';
     const status = document.createElement('span');
-    status.className = 'ucard__status ucard__status--' + (isRented ? 'rented' : 'available');
-    status.textContent = isRented ? 'Vermietet' : 'Verfügbar';
+    status.className = 'ucard__status ucard__status--' + (isUnavailable ? 'rented' : 'available');
+    status.textContent = statusVal === 'reserved' ? 'Reserviert'
+      : statusVal === 'rented' ? 'Vermietet'
+      : 'Verfügbar';
     card.prepend(status);
 
     const toggle = document.createElement('button');
