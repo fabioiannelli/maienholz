@@ -14,6 +14,7 @@
   --color-accent: #8B7D6B;
   --color-error: #C0392B;
   --color-success: #27AE60;
+  --color-reserved: #E8871E;
 
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
