@@ -73,6 +73,50 @@
   gap: var(--space-sm);
 }
 
+/* Reiheneinfamilienhäuser — all 7 units on a single row: taller, narrower cards.
+   Only on wide desktop (≥1400px) where 4 plan buttons still fit on one line;
+   below that it falls back to the shared multi-column layout. */
+@media (min-width: 1400px) {
+  .unit-grid--row {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.7rem;
+    align-items: stretch;
+  }
+
+  .unit-grid--row .ucard {
+    padding: 1.1rem 0.75rem;
+  }
+
+  /* Stack the area figures vertically so the card stays narrow and grows taller */
+  .unit-grid--row .ucard__details {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  /* Small floor-plan buttons sit side by side; CTA gets its own full-width row */
+  .unit-grid--row .ucard__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  /* Plan links keep their natural (small) width, e.g. "EG" — compact enough
+     that even 4 buttons (EG/OG/Attika/UG) fit on one line in the narrow box */
+  .unit-grid--row .ucard__link {
+    flex: 0 0 auto;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.72rem;
+  }
+
+  /* "Jetzt anfragen" alone on its own full-width line */
+  .unit-grid--row .ucard__cta {
+    flex: 1 0 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
 /* Unit card */
 .ucard {
   position: relative;
@@ -117,11 +161,6 @@
 
 .ucard__status--rented {
   color: var(--color-error);
-}
-
-/* Reihenhaus A4: reserviert, aber in Orange statt Rot */
-.ucard[data-unit-id="A4"] .ucard__status--rented {
-  color: var(--color-reserved);
 }
 
 /* Slight left indent so text content doesn't sit flush against the
