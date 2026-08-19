@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Einweihungsfeier — Überbauung Maienholz</title>
+  <meta name="description" content="Anmeldung zur Einweihungsfeier der Überbauung Maienholz am 17. September 2026 in Erlinsbach AG.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><path fill-rule='evenodd' d='M22 3C30 2 37.5 9.5 37 19C36.5 28.5 29 36 19.5 36.5C10 37 3 29.5 3.5 20C4 10.5 14 4 22 3ZM21 13.5C17.5 14 14.5 17 15 21C15.5 25 18.5 27.5 22 27C25.5 26.5 28 23.5 27.5 20C27 16.5 24 13 21 13.5Z' fill='%234A5E3A'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Einweihungsfeier — Anmeldeseite */
+    :root { --fest-width: 46rem; }
+
+    /* Etwas engerer Buchstabenabstand als auf den übrigen Seiten */
+    .fest-card .kontakt-form__label,
+    .fest-card .kontakt-form__submit { letter-spacing: 0.05em; }
+    .fest-intro,
+    .fest-note { letter-spacing: -0.01em; }
+
+    .fest-header {
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .fest-header__logo { color: var(--color-green); display: block; }
+    .fest-header__logo svg { width: 38px; height: 38px; display: block; }
+
+    /* Alle drei Blöcke teilen dieselbe Breite */
+    .fest-facts,
+    .fest-intro,
+    .fest-card {
+      max-width: var(--fest-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fest-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .fest-fact {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm);
+      box-shadow: var(--shadow-sm);
+    }
+    .fest-fact__label {
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      margin: 0 0 0.35rem;
+    }
+    .fest-fact__value {
+      font-size: 1rem;
+      font-weight: var(--fw-medium);
+      letter-spacing: -0.015em;
+      color: var(--color-text);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .fest-intro {
+      margin-bottom: var(--space-md);
+      text-align: center;
+      color: var(--color-text-light);
+    }
+
+    .fest-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-md);
+    }
+
+    .fest-note {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      text-align: center;
+      margin-top: var(--space-sm);
+    }
+
+    @media (max-width: 720px) {
+      .fest-facts { grid-template-columns: 1fr; }
+      .fest-card { padding: var(--space-sm); }
+    }
+  </style>
+</head>
+<body>
+  <header class="fest-header">
+    <a href="index.html" class="fest-header__logo" aria-label="Maienholz — Startseite">
+      <svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M22 3C30 2 37.5 9.5 37 19C36.5 28.5 29 36 19.5 36.5C10 37 3 29.5 3.5 20C4 10.5 14 4 22 3ZM21 13.5C17.5 14 14.5 17 15 21C15.5 25 18.5 27.5 22 27C25.5 26.5 28 23.5 27.5 20C27 16.5 24 13 21 13.5Z"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero--half">
+      <div class="hero__bg">
+        <img src="images/hof.jpg" alt="Innenhof der Überbauung Maienholz">
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title">Einweihungsfeier</h1>
+        <p class="hero__subtitle">Donnerstag, 17. September 2026 — Maienholz, Erlinsbach AG</p>
+      </div>
+    </section>
+
+    <!-- Anmeldung -->
+    <section class="section section--cream">
+      <div class="container container--narrow">
+
+        <div class="fest-facts">
+          <div class="fest-fact">
+            <p class="fest-fact__label">Datum</p>
+            <p class="fest-fact__value">Donnerstag<br>17. September 2026</p>
+          </div>
+          <div class="fest-fact">
+            <p class="fest-fact__label">Zeit</p>
+            <p class="fest-fact__value">ab 17.30 Uhr<br>Ansprache um 18.00 Uhr</p>
+          </div>
+          <div class="fest-fact">
+            <p class="fest-fact__label">Ort</p>
+            <p class="fest-fact__value">Maienholz 15<br>5018 Erlinsbach AG</p>
+          </div>
+        </div>
+
+        <p class="fest-intro">
+          Wir freuen uns, das Maienholz gemeinsam mit Ihnen einzuweihen — bei Speis, Trank und
+          guten Gesprächen. Diese Einladung gilt persönlich für Sie.
+          Bitte melden Sie sich bis am <strong>10. September 2026</strong> an.
+        </p>
+
+        <div class="fest-card">
+          <form id="festForm" class="kontakt-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms: Zustellung an fi@hamero.ch -->
+            <input type="hidden" name="access_key" value="00b19baa-5664-44bc-88a1-528a408f074f">
+            <input type="hidden" name="subject" value="Anmeldung Einweihungsfeier Maienholz">
+            <input type="hidden" name="from_name" value="Anmeldung Einweihungsfeier Maienholz">
+            <input type="hidden" name="einladung" value="Persönliche Einladung (ohne Begleitung)">
+            <!-- Honeypot gegen Spam -->
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="kontakt-form__row">
+              <div class="kontakt-form__group">
+                <label class="kontakt-form__label" for="fest-vorname">Vorname*</label>
+                <input class="kontakt-form__input" type="text" id="fest-vorname" name="firstname" autocomplete="given-name" required>
+              </div>
+              <div class="kontakt-form__group">
+                <label class="kontakt-form__label" for="fest-nachname">Nachname*</label>
+                <input class="kontakt-form__input" type="text" id="fest-nachname" name="lastname" autocomplete="family-name" required>
+              </div>
+            </div>
+
+            <div class="kontakt-form__row">
+              <div class="kontakt-form__group">
+                <label class="kontakt-form__label" for="fest-email">E-Mail*</label>
+                <input class="kontakt-form__input" type="email" id="fest-email" name="email" autocomplete="email" required>
+              </div>
+              <div class="kontakt-form__group">
+                <label class="kontakt-form__label" for="fest-telefon">Telefon</label>
+                <input class="kontakt-form__input" type="tel" id="fest-telefon" name="phone" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="kontakt-form__group">
+              <label class="kontakt-form__label" for="fest-bemerkung">Bemerkungen</label>
+              <textarea class="kontakt-form__textarea" id="fest-bemerkung" name="message" rows="3" placeholder="Optional"></textarea>
+            </div>
+
+            <div class="kontakt-form__submit-wrap">
+              <button type="submit" class="kontakt-form__submit">Anmeldung senden</button>
+              <button type="submit" class="kontakt-form__submit-arrow" aria-label="Anmeldung senden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+            <p class="fest-note">
+              Mit * markierte Felder sind Pflichtfelder. Ihre Angaben verwenden wir ausschliesslich
+              für die Organisation des Anlasses — siehe <a href="datenschutz.html">Datenschutz</a>.
+            </p>
+          </form>
+
+          <div class="form__success" id="festSuccess">
+            <h3>Herzlichen Dank für Ihre Anmeldung!</h3>
+            <p>Wir freuen uns auf Sie. Bei Fragen erreichen Sie uns unter
+              <a href="mailto:fabio.iannelli@hamero.ch">fabio.iannelli@hamero.ch</a> oder
+              <a href="tel:+41628382020">062 838 20 20</a>.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span>Hamero Immobilien AG, Aarau — 062 838 20 20</span>
+        <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/fest.js"></script>
+</body>
+</html>
